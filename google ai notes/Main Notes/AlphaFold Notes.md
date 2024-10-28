@@ -3,7 +3,7 @@
 
 Status: under progress
 
-Tags:[[AlphaFold]] [[Ai]] [[google]] [[AlphaFold 3]] 
+Tags: [[AlphaFold]] [[Ai]] [[google]] 
 
 >What took us months and years to do, AlphaFold was able to do in a weekend.
 >-Professor John McGeehan  

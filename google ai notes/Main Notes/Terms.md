@@ -3,7 +3,7 @@
 
 Status:
 
-Tags: 
+Tags: [[AI]] [[proteins]] 
 
 
 # AI/ML
@@ -45,7 +45,10 @@ Characteristics:
 #### Pairwise Representation (in AlphaFold)
 **Pairwise Representation**: A two dimensional *image* of which bits of the protein are near to each other. It can be thought of as a 2 dimensional map of the protein's 3D shape 
 
+#### Multimodal
+A **multimodal** model is an AI system that can process and understand multiple types of data inputs, such as text, images, audio, and video, simultaneously. Multimodal models are designed to handle information across these various modalities and interpret the relationships between them, allowing for a more holistic understanding and complex reasoning that mimics human perception. For example, a multimodal AI might analyze a video by interpreting both the audio and visual elements to respond more accurately to questions about its content.
 
+These models are used in tasks requiring cross-modal reasoning, such as describing images, generating images from text prompts, summarizing audio content, or analyzing complex multimedia inputs (like in Google’s Gemini or OpenAI's GPT-4). By integrating data from different types of sources, multimodal models can provide more contextually aware, accurate, and versatile responses.
 ### Transformers
 Transformers are a type of deep learning model architecture that have become foundational in natural language processing (NLP) and have expanded into areas like vision, audio, and even reinforcement learning. They rely on **attention mechanisms** to understand context within sequential data, allowing for highly parallelizable and scalable processing of input data, which makes them efficient for large-scale tasks.
 
@@ -93,6 +96,45 @@ Since their introduction in 2017, transformers have evolved to support various t
 
 Transformers have driven advances across various fields, from language models to image synthesis, becoming a staple in modern AI research and applications.
 
+#### Diffusion Model
+A diffusion model is a type of generative model that learns to create new data by gradually transforming a simple, random distribution into a complex one that represents real-world data. Inspired by physical diffusion processes, these models simulate data transformation in a sequence of small, reversible steps. Typically, they start with data (like images) that is gradually “noised” until it becomes indistinguishable from pure noise. During training, the model learns to reverse this process by predicting and removing noise in a step-by-step manner, generating coherent outputs from noise.
+
+Key components include:
+
+1. **Noise Schedule**: A systematic way to add increasing levels of noise to data.
+2. **Denoising Network**: Trained to remove noise in each step, reconstructing the original data.
+3. **Sampling**: During generation, the denoising network reverses the noise steps, producing realistic data samples from random noise.
+
+These models, known for their stability and capacity to generate high-quality images, are used in fields like image synthesis and inpainting, as well as recent advancements in text-to-image AI systems.
+
+
+### AI Agents (LLMs)
+AI agents powered by **Large Language Models (LLMs)** are advanced systems that leverage the language understanding and generation capabilities of LLMs, like GPT-4, Google Gemini, or Claude, to complete tasks that typically involve complex reasoning, interaction, and adaptation to dynamic environments. These agents are particularly useful in situations where natural language understanding, planning, or sophisticated dialogue is needed to solve problems or assist users.
+
+#### Key Aspects of AI Agents Using LLMs
+
+1. **Autonomous Problem-Solving**: These agents are designed to achieve specific objectives, such as handling customer service inquiries, summarizing documents, or even coding assistance. By understanding natural language instructions, they can break down complex tasks, interpret ambiguous inputs, and make contextual adjustments based on user interaction.
+    
+2. **Multi-Step Task Execution**: LLM-powered agents can follow multi-step instructions, such as booking reservations, conducting research, or generating content. They often use a sequence of prompts and context-based reasoning to perform tasks effectively, keeping track of prior steps and dynamically adjusting responses.
+    
+3. **Human-Like Interaction**: Leveraging the conversational abilities of LLMs, these agents engage users in a more natural, intuitive dialogue. They interpret questions, offer clarifications, and remember context over conversations, making them ideal for tasks like virtual assistance and tutoring.
+    
+4. **Integration with Other Tools**: Many LLM-powered agents, such as ChatGPT plugins and AutoGPT, can interact with external APIs, search engines, or databases to augment their capabilities. For instance, an AI agent might use an LLM to generate code but then use a web API to look up documentation or test outputs in real-time.
+    
+5. **Applications in Various Domains**:
+    
+    - **Customer Support**: LLM-based agents like ChatGPT or Google's Bard are often employed to assist in handling user queries by retrieving information, resolving issues, or forwarding complex cases.
+    - **Education and Tutoring**: AI tutors use LLMs to explain concepts, provide feedback, and engage in interactive learning experiences.
+    - **Research Assistance**: LLM-powered research assistants can summarize papers, pull information from various sources, and assist in organizing findings, which is helpful in fields like academia and healthcare.
+    - **Programming and Code Assistance**: Agents like GitHub Copilot and OpenAI’s Codex, which are LLM-driven, help programmers by generating code, debugging, and suggesting improvements, streamlining the development process.
+
+#### Examples of LLM-Based AI Agents
+
+- **AutoGPT**: An experimental application using GPT models to autonomously complete tasks by generating and executing prompts in response to its own outputs.
+- **ChatGPT with Plugins**: An implementation of ChatGPT that can use plugins to interact with external tools, enhancing its capabilities by allowing it to look up information, calculate, retrieve real-time data, and more.
+- **Claude**: An LLM developed by Anthropic, Claude is designed to perform well in multi-turn conversations, retaining information across prompts, making it suited for use cases in customer service and dialogue systems.
+
+These LLM-based agents are rapidly evolving, with future developments expected to increase their accuracy, task complexity, and ethical alignment. The goal is to create agents that can adapt, learn, and respond accurately across a diverse range of tasks, improving productivity and user experience across sectors.
 # Biology
 #### Ligands
 A **ligand** is a molecule that binds to a specific site on a target molecule, usually a protein, forming a complex that can alter the target’s function. Ligands are essential in many biological processes, including cell signaling and enzymatic regulation, and can be ions, small molecules, or even larger biomolecules like antibodies. This binding is crucial in drug discovery, where ligands are designed to interact with proteins to modify biological activity and treat diseases

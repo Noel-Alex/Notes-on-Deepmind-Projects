@@ -3,7 +3,7 @@
 
 Status: Currently under work
 
-Tags: [[Ai]] [[google]] [[GDSC]] [[AlphaFold]] [[veo]] [[Gemini]] [[Imagen]] [[SynthID]] 
+Tags: [[Ai]] [[google]] [[GDSC]] [[AlphaFold]] [[veo]] [[Tags/Gemini]] [[Imagen]] [[SynthID]] 
 #GDSC_class
  
 
@@ -16,7 +16,7 @@ Tags: [[Ai]] [[google]] [[GDSC]] [[AlphaFold]] [[veo]] [[Gemini]] [[Imagen]] [[S
 >“The pace of progress in artificial intelligence (I’m not referring to narrow AI) is incredibly fast. Unless you have direct exposure to groups like Deepmind, you have no idea how fast—it is growing at a pace close to exponential. The risk of something seriously dangerous happening is in the five-year time frame. 10 years at most.”
 —Elon Musk wrote in a comment on Edge.org
 
-It is Google's research lab that works with and develops general purpose AI/AGI for a variety of tasks that make use of [text to video](veo), [text to image](Imagen), [text to text based systems](Gemini),[protein folding prediction](AlphaFold.md) , etc.
+It is Google's research lab that works with and develops general purpose AI/AGI for a variety of tasks that make use of [text to video](veo), [text to image](Imagen), [text to text based systems](Tags/Gemini.md),[protein folding prediction](AlphaFold.md) , etc.
 
 ![[Pasted image 20241021083923.png]]
 #### More info
@@ -53,6 +53,9 @@ It is Google's research lab that works with and develops general purpose AI/AGI 
 # Veo
 [**VEO**](VEO%20notes.md) is Google's state of the art text to video ai model that generates high resolution videos that last even over a minute in different cinematic styles and understands prompts for all kinds of cinematic effects, like time lapses or aerial shots of a landscape.
 
+
+# AlphaFold
+[AlphaFold](AlphaFold%20Notes), developed by DeepMind, is an AI model designed to predict the 3D structures of proteins from their amino acid sequences with near-experimental accuracy. It uses a deep learning approach, particularly transformers, to model spatial relationships within proteins, identifying folding patterns based on sequence data. A key innovation in AlphaFold 2, the Evoformer module, leverages evolutionary data to refine these predictions further. AlphaFold has significantly advanced scientific understanding, aiding drug discovery, genomics, and structural biology by providing fast, reliable protein structure predictions.
 
 >[!Summary]- Summary
 >
