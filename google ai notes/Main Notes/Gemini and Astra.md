@@ -41,6 +41,15 @@ Gemini uses [Imagen](Imagen) for it's image generation related tasks,
 
 
 # Gemmas
-Although 
+Although the Gemini models are not open sourced and can't be used by the public. Google has released, small, lightweight models known as the gemma models, that are highly capable models at a low enough parameter count that they can be used for both inference and fine tuning locally on consumer grade hardware.
 
+Gemma is a family of open-weight, large language models developed by Google DeepMind, focused on providing flexible and scalable AI tools for developers. Named after the Latin word for "precious stone," Gemma is designed to be adaptable and performant across a range of tasks, with support for running on various devices, from mobile to hosted cloud services. Unlike other models, Gemma is optimized to balance efficiency and task specificity, making it ideal for use in customized applications.
+
+The Gemma models come in two primary versions: **Pretrained** (PT) and **Instruction-Tuned** (IT). Pretrained models are more generalized and not fine-tuned for any specific tasks, allowing developers to mold them according to particular application needs. In contrast, instruction-tuned versions have been trained with conversational language data, making them suitable for dialogue-based applications, similar to a chatbot.
+
+These models draw from Google’s advanced Gemini research, which forms the backbone of Gemma's architecture. With this lineage, Gemma enables developers to use open weights for advanced AI development and fine-tuning. It offers robust flexibility for on-device generation and real-time inference and has been integrated with various platforms and frameworks like JAX, Flax, Keras, and Vertex AI, facilitating experimentation and development in natural language processing, translation, and coding assistance tasks.
+
+Developers interested in working with Gemma can explore its model cards and [GitHub repository](https://github.com/google-deepmind/gemma), where resources include model weights, instructions for setup, and code examples to get started quickly. The design focus on open weights and modular architecture allows users to integrate these models effectively within custom systems, promoting innovation and collaboration in AI​
+
+Usage of these models in code can be found [here](<Running and Using LLMS with Code.md>)
 # References

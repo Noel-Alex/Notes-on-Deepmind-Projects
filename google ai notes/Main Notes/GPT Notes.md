@@ -6,9 +6,77 @@ Status:
 Tags: [[Ai]] [[LLM-LLVM]] 
 
 
-# What are GPTs
-
+# What are GPTs 
+GPT stands for generative pretrained transformer
 The idea of [transformers](Terms#Transformers) were first introduced in Google's groundbreaking paper titled [Attention is all you need](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) which has since been cited over 138,000 times and it outlines the approach on how you could train ai models with massive parameter counts in parallel saving huge amounts of time as they could be computed using GPUs.![[Pasted image 20241028155139.png]]
+### **1. Tokenization of Input Query**
+
+- **Goal:** Convert the raw text input (query) into a format the model can process.
+- **Process:** The input text is split into smaller units called tokens (words, subwords, or characters). Each token is assigned a unique identifier (ID) based on a pre-defined vocabulary.
+- **Example:** The input “Hello, how are you?” might be tokenized into ["Hello", ",", "how", "are", "you", "?"] with each token represented by an ID.
+
+### **2. Embedding Layer**
+
+- **Goal:** Transform tokens into vector representations the model can work with.
+- **Process:** Each token ID is mapped to a high-dimensional embedding vector. These embeddings encode semantic information, allowing the model to understand relationships between words.
+- **Intuition:** Similar words or words used in similar contexts have embeddings that are close together in the vector space, helping the model understand context even for synonyms or similar phrases.
+
+### **3. Adding Positional Encoding**
+
+- **Goal:** Since transformers process input tokens simultaneously (non-sequentially), they lack inherent knowledge of token order. Positional encoding provides this information.
+- **Process:** Each token’s embedding is adjusted by adding a positional encoding vector. The _“Attention is All You Need”_ paper introduced sinusoidal functions to generate these vectors, encoding the relative position of each token.
+- **Effect:** The model can recognize token order and dependencies across sequences, critical for understanding sentence structure.
+
+### **4. Passing Through the Encoder Stack (Self-Attention Mechanism)**
+
+- **Goal:** The encoder stack analyzes input tokens and learns relationships between them using multi-head self-attention.
+- **Self-Attention (Core Concept):** Self-attention computes the relevance of each token in the context of all others. This is done through:
+    - **Query, Key, and Value Vectors:** For each token, the model generates these vectors to determine attention weights.
+    - **Dot-Product Attention Calculation:** The dot product of queries and keys produces scores that determine how much attention each token should pay to others.
+    - **Softmax Normalization:** Scores are normalized, and each token’s value vector is weighted based on these normalized scores.
+    - **Multi-Head Attention:** Multiple sets of query-key-value operations (heads) allow the model to capture different aspects of relationships within the data.
+- **Example:** In the sentence “The cat sat on the mat,” the self-attention mechanism allows the model to focus on relationships, like "cat" being related to "sat" more than "mat."
+
+### **5. Applying Feedforward Layers**
+
+- **Goal:** Enhance the model’s representational power.
+- **Process:** After each self-attention layer, a feedforward neural network processes the attention output, learning further patterns and relationships. This step is followed by normalization layers to ensure stable gradients and improved performance.
+
+### **6. Repeating Encoder Layers**
+
+- **Goal:** Capture complex, multi-layered dependencies in the input.
+- **Process:** The encoder stack comprises multiple layers, each containing self-attention and feedforward sub-layers. These layers progressively refine the model’s understanding of the input query.
+
+### **7. Decoder Stack and Cross-Attention**
+
+- **Goal:** Generate output text by attending to encoder outputs and previously generated tokens.
+- **Cross-Attention (New for Decoding):** The decoder contains both self-attention and cross-attention.
+    - **Self-Attention in Decoder:** It focuses on previously generated tokens, helping maintain coherence in the response.
+    - **Cross-Attention to Encoder:** Cross-attention layers in the decoder pay attention to encoder outputs, grounding the response in the context provided by the input query.
+- **Masked Self-Attention (Decoding Specific):** During generation, the decoder only “sees” tokens that have been generated so far (to the left of the current token in the sequence). This prevents the model from “peeking” at future tokens.
+
+### **8. Linear and Softmax Layers (Output Layer)**
+
+- **Goal:** Convert the decoder’s processed vector into probabilities for each possible next token.
+- **Process:** The final layer transforms decoder outputs into logits (raw scores) corresponding to each token in the vocabulary. These scores are passed through a softmax function, converting them into probabilities.
+- **Token Selection (Next-Token Prediction):** The model selects the next token based on these probabilities. Selection strategies like greedy sampling, beam search, or top-k sampling help ensure coherent and contextually relevant generation.
+
+### **9. Generating the Complete Response**
+
+- **Iterative Process:** Steps 7 and 8 repeat for each token until a stopping condition is met (e.g., a special end-of-sequence token).
+- **Constructing the Response:** Each predicted token is appended to the response, forming a coherent output sentence or paragraph.
+
+---
+
+### **Key Innovations from "Attention is All You Need" Paper**
+
+- **Self-Attention over Recurrence:** The paper’s transformer model replaced recurrent structures with self-attention, allowing efficient parallel processing and better long-range dependency handling.
+- **Multi-Head Attention:** Using multiple attention “heads” allowed the model to focus on different relationships within the input sequence simultaneously.
+- **Positional Encoding:** This addition addressed the lack of inherent sequential structure in transformers, crucial for maintaining word order in natural language.
+
+>[!Summary]+ Summary
+>### **Summary**
+This flow demonstrates how transformers process an input query through tokenization, embedding, self-attention, and decoding to generate a meaningful, context-aware response. The _“Attention is All You Need”_ paper’s innovations are foundational, enabling transformers like GPT to handle complex language tasks effectively without recurrence.
 
 A very rudimentary implementation of this architecture is given below, but if you want to build it yourself I strongly recommend you to follow along with [Andrej Karpathy](https://youtu.be/kCc8FmEb1nY?si=jJIS7j6SY-8aeNnU) or this tutorial from [freecodecamp](https://www.youtube.com/watch?v=UU1WVnMk4E8&pp=ygUQZ3B0IGZyb20gc2NyYXRjaA%3D%3D) 
 

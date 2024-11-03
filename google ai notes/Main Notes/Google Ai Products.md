@@ -30,7 +30,7 @@ It is Google's research lab that works with and develops general purpose AI/AGI 
 
 
 # Gemini and the Astra Project
-[**Gemini**](Gemini%20notes.md) is a large language model developed by Google AI. It's designed to be more versatile and capable than previous models, able to perform a wide range of tasks such as generating text, translating languages, writing different kinds of creative content, and answering your questions in an informative way.  
+[**Gemini**](Gemini%20and%20Astra) is a large language model developed by Google AI. It's designed to be more versatile and capable than previous models, able to perform a wide range of tasks such as generating text, translating languages, writing different kinds of creative content, and answering your questions in an informative way.  
 
 **The Astra Project** is a research initiative aimed at developing advanced AI technologies, including Gemini. It focuses on pushing the boundaries of AI capabilities and exploring potential applications that could benefit society.
 
