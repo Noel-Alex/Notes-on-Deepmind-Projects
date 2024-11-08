@@ -78,6 +78,7 @@ The idea of [transformers](Terms#Transformers) were first introduced in Google's
 >### **Summary**
 This flow demonstrates how transformers process an input query through tokenization, embedding, self-attention, and decoding to generate a meaningful, context-aware response. The _“Attention is All You Need”_ paper’s innovations are foundational, enabling transformers like GPT to handle complex language tasks effectively without recurrence.
 
+
 A very rudimentary implementation of this architecture is given below, but if you want to build it yourself I strongly recommend you to follow along with [Andrej Karpathy](https://youtu.be/kCc8FmEb1nY?si=jJIS7j6SY-8aeNnU) or this tutorial from [freecodecamp](https://www.youtube.com/watch?v=UU1WVnMk4E8&pp=ygUQZ3B0IGZyb20gc2NyYXRjaA%3D%3D) 
 
 ```python
@@ -372,4 +373,152 @@ GPT models raise ethical considerations, such as:
 - **Misinformation**: Their ability to generate convincing text can lead to the spread of misinformation if misused.
 - **Bias**: Being trained on vast internet data, GPTs can inadvertently reflect biases present in that data.
 - **Employment Impact**: The automation of text-based tasks can affect industries that rely on manual content creation and curation.
+
+# Why are transformers important?
+[**source**](https://aws.amazon.com/what-is/transformers-in-artificial-intelligence/)
+
+Early [deep learning](https://aws.amazon.com/what-is/deep-learning/) models that focused extensively on [natural language processing](https://aws.amazon.com/what-is/nlp/) (NLP) tasks aimed at getting computers to understand and respond to natural human language. They guessed the next word in a sequence based on the previous word.
+
+To understand better, consider the autocomplete feature in your smartphone. It makes suggestions based on the frequency of word pairs that you type. For example, if you frequently type "I am fine," your phone autosuggests _fine_ after you type _am._
+
+Early [machine learning](https://aws.amazon.com/what-is/machine-learning/) (ML) models applied similar technology on a broader scale. They mapped the relationship frequency between different word pairs or word groups in their training data set and tried to guess the next word. However, early technology couldn’t retain context beyond a certain input length. For example, an early ML model couldn’t generate a meaningful paragraph because it couldn’t retain context between the first and last sentence in a paragraph. To generate an output such as "I am from Italy. I like horse riding. I speak Italian.", the model needs to remember the connection between Italy and Italian, which early neural networks just couldn’t do.
+
+Transformer models fundamentally changed NLP technologies by enabling models to handle such long-range dependencies in text. The following are more benefits of transformers.
+
+
+### **Enable large-scale models**
+
+Transformers process long sequences in their entirety with parallel computation, which significantly decreases both training and processing times. This has enabled the training of very large language models (LLM), such as GPT and BERT, that can learn complex language representations. They have billions of parameters that capture a wide range of human language and knowledge, and they’re pushing research toward more generalizable AI systems.
+
+[Read about large language models](https://aws.amazon.com/what-is/large-language-model/)
+
+[Read about GPT](https://aws.amazon.com/what-is/gpt/)
+
+### **Enable faster customization**
+
+With transformer models, you can use techniques such as transfer learning and retrieval augmented generation (RAG). These techniques enable the customization of existing models for industry organization-specific applications. Models can be pretrained on large datasets and then fine-tuned on smaller, task-specific datasets. This approach has democratized the use of sophisticated models and removed resource constraint limitations in training large models from scratch. Models can perform well across multiple domains and tasks for various use cases.
+
+### **Facilitate multi-modal AI systems**
+
+With transformers, you can use AI for tasks that combine complex data sets. For instance, models like DALL-E show that transformers can generate images from textual descriptions, combining NLP and computer vision capabilities. With transformers, you can create AI applications that integrate different information types and mimic human understanding and creativity more closely.
+
+[Read about computer vision](https://aws.amazon.com/what-is/computer-vision/)
+
+### **AI research and industry innovation**
+
+Transformers have created a new generation of AI technologies and AI research, pushing the boundaries of what's possible in ML. Their success has inspired new architectures and applications that solve innovative problems. They have enabled machines to understand and generate human language, resulting in applications that enhance customer experience and create new business opportunities.
+
+## What are the use cases for transformers?
+
+You can train large transformer models on any sequential data like human languages, music compositions, programming languages, and more. The following are some example use cases.
+
+### **Natural language processing**
+
+Transformers enable machines to understand, interpret, and generate human language in a way that's more accurate than ever before. They can summarize large documents and generate coherent and contextually relevant text for all kinds of use cases. Virtual assistants like Alexa use transformer technology to understand and respond to voice commands.
+
+### **Machine translation**
+
+Translation applications use transformers to provide real-time, accurate translations between languages. Transformers have significantly improved the fluency and accuracy of translations as compared to previous technologies.
+
+[Read about machine translation](https://aws.amazon.com/what-is/machine-translation/)
+
+### **DNA sequence analysis**
+
+By treating segments of DNA as a sequence similar to language, transformers can predict the effects of genetic mutations, understand genetic patterns, and help identify regions of DNA that are responsible for certain diseases. This capability is crucial for personalized medicine, where understanding an individual's genetic makeup can lead to more effective treatments.
+
+### **Protein structure analysis**
+
+Transformer models can process sequential data, which makes them well suited for modeling the long chains of amino acids that fold into complex protein structures. Understanding protein structures is vital for drug discovery and understanding biological processes. You can also use transformers in applications that predict the 3D structure of proteins based on their amino acid sequences.
+
+
+# More Details on the Attention is All You Need Paper
+
+The _Attention Is All You Need_ paper introduces the **Transformer** architecture, a model that has since become fundamental in natural language processing (NLP) and other domains. The key idea is that attention mechanisms alone can handle sequence processing tasks, removing the need for recurrent networks (like RNNs or LSTMs), which often struggle with long-term dependencies. Here’s a breakdown of the paper's core concepts and structure:
+
+---
+
+### 1. **Introduction**
+
+- The paper challenges traditional sequence-to-sequence (seq2seq) models that use RNNs or LSTMs.
+- The **Transformer** model relies on _self-attention mechanisms_ to handle dependencies, instead of recurrence, which speeds up training and improves parallelization.
+
+### 2. **Self-Attention Mechanism**
+
+- Self-attention (or intra-attention) is the backbone of the Transformer, enabling the model to focus on different parts of an input sequence at each layer.
+- **Scaled Dot-Product Attention** is the main operation: Attention(Q,K,V)=softmax(QKTdk)V\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)VAttention(Q,K,V)=softmax(dk​​QKT​)V where:
+    - QQQ is the Query matrix,
+    - KKK is the Key matrix,
+    - VVV is the Value matrix,
+    - dkd_kdk​ is the dimensionality of the keys.
+
+### 3. **Multi-Head Attention**
+
+- Instead of applying a single self-attention mechanism, the Transformer uses **multi-head attention**:
+    - The input is projected into multiple subspaces (heads), which allows the model to attend to different aspects of the sequence.
+    - The results from each head are concatenated and linearly transformed to produce the final output.
+- **Purpose**: Enables the model to capture more complex dependencies in the sequence by learning multiple relationships simultaneously.
+
+### 4. **Positional Encoding**
+
+- Since the Transformer doesn’t use recurrence, it lacks a natural way to process sequence order.
+- **Positional encoding** is added to each input embedding to give the model a sense of order.
+- Commonly, a mix of sine and cosine functions is used: PE(pos,2i)=sin⁡(pos100002i/d)PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d}}\right)PE(pos,2i)​=sin(100002i/dpos​) PE(pos,2i+1)=cos⁡(pos100002i/d)PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right)PE(pos,2i+1)​=cos(100002i/dpos​) where pospospos is the position and iii is the dimension.
+
+### 5. **Encoder-Decoder Architecture**
+
+- The Transformer is a stack of encoders and decoders:
+    
+    - **Encoder**: Consists of layers with multi-head attention followed by position-wise feed-forward networks.
+    - **Decoder**: Similar structure but has an additional masked multi-head attention layer to prevent attending to future tokens.
+- Each encoder and decoder layer has two sub-layers:
+    
+    1. Multi-head attention.
+    2. Feed-forward neural network.
+- **Residual connections** are used around each sub-layer, followed by layer normalization to stabilize training.
+    
+
+### 6. **Layer Normalization and Residual Connections**
+
+- **Residual connections** ensure stable gradient flow and prevent gradient vanishing/explosion issues.
+- **Layer normalization** is applied after adding the residual connections, helping each layer to learn more effectively.
+
+### 7. **Feed-Forward Network**
+
+- Each layer has a position-wise feed-forward network: FFN(x)=max⁡(0,xW1+b1)W2+b2\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2FFN(x)=max(0,xW1​+b1​)W2​+b2​
+- This simple two-layer network allows for additional transformation and complexity after attention.
+
+### 8. **Training and Optimization**
+
+- The model uses **cross-entropy loss** for training with **teacher forcing**, where ground truth sequences are used during training to predict the next token.
+- **Adam optimizer** is used with learning rate scheduling: lr=dmodel−0.5×min⁡(step−0.5,step×warmup_steps−1.5)\text{lr} = d_{\text{model}}^{-0.5} \times \min(\text{step}^{-0.5}, \text{step} \times \text{warmup\_steps}^{-1.5})lr=dmodel−0.5​×min(step−0.5,step×warmup_steps−1.5)
+- This schedule improves training stability, especially in the early stages.
+
+### 9. **Model Efficiency and Scalability**
+
+- The Transformer is highly parallelizable since each token’s computation does not depend on previous tokens.
+- This architecture dramatically improves training speed, especially on long sequences, compared to RNN-based models.
+
+### 10. **Key Results and Contributions**
+
+- The model achieves state-of-the-art performance on machine translation tasks (e.g., English to German) with fewer resources.
+- Shows the effectiveness of the attention mechanism, especially in capturing long-term dependencies.
+
+### 11. **Future Implications**
+
+- The architecture set the stage for BERT, GPT, and other large language models (LLMs), which all extend the ideas from this Transformer model.
+
+---
+
+### **Summary**
+
+The Transformer introduced a model that relies solely on attention mechanisms to process sequential data, proving that recurrence isn’t essential for high-quality sequence modeling. It emphasizes parallelism, simplicity in architecture, and flexibility, enabling rapid advancements in NLP and influencing models in various fields. The key contributions include:
+
+- Self-attention and multi-head attention.
+- Positional encoding for sequence order.
+- Layer normalization and residual connections for stable training.
+- Highly parallelizable structure that allows efficient training.
+
+This foundational paper has driven innovations across machine learning, making it a landmark in NLP and deep learning.
+
+
 # References

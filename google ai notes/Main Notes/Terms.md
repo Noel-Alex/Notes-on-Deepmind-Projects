@@ -49,7 +49,8 @@ Characteristics:
 A **multimodal** model is an AI system that can process and understand multiple types of data inputs, such as text, images, audio, and video, simultaneously. Multimodal models are designed to handle information across these various modalities and interpret the relationships between them, allowing for a more holistic understanding and complex reasoning that mimics human perception. For example, a multimodal AI might analyze a video by interpreting both the audio and visual elements to respond more accurately to questions about its content.
 
 These models are used in tasks requiring cross-modal reasoning, such as describing images, generating images from text prompts, summarizing audio content, or analyzing complex multimedia inputs (like in Google’s Gemini or OpenAI's GPT-4). By integrating data from different types of sources, multimodal models can provide more contextually aware, accurate, and versatile responses.
-### Transformers
+### Transformers 
+(More [here](GPT%20Notes) and [here](More%20on%20Transformers)
 Transformers are a type of deep learning model architecture that have become foundational in natural language processing (NLP) and have expanded into areas like vision, audio, and even reinforcement learning. They rely on **attention mechanisms** to understand context within sequential data, allowing for highly parallelizable and scalable processing of input data, which makes them efficient for large-scale tasks.
 
 #### Core Concepts of Transformers
