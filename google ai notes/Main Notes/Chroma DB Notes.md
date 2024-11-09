@@ -3,7 +3,7 @@
 
 Status:
 
-Tags: [[vector database]]
+Tags: [[vector database]] [[RAG]]
 	[[chromadb]]
 	#vector_database #chromadb
 
